@@ -11,20 +11,25 @@ global barchart_options="lcolor(black) lpattern(solid) lwidth(medium) graphregio
 use "data_1.dta", clear
 
 preserve
+   nl (justice=1-exp(-({lambda0}*units)^{k0=1})) if treatment==0
+   nl (justice=1-exp(-({lambda0}*units)^{k0=1})) if treatment==1
+      scalar lambdat2=_b[/lambda0]
+      scalar kt2=_b[/k0]
+
    gen d1000=0
       replace d1000=1 if units>=1000
 
    nl (justice=1-exp(-(({lambda0}+{lambda1=0}*d1000)*units)^({k0=1}+{k1=0}*d1000))) if treatment==0
-   scalar lambdat1_0=_b[/lambda0]
-   scalar lambdat1_1=_b[/lambda1]
-   scalar kt1_0=_b[/k0]
-   scalar kt1_1=_b[/k1]
+      scalar lambdat1_0=_b[/lambda0]
+      scalar lambdat1_1=_b[/lambda1]
+      scalar kt1_0=_b[/k0]
+      scalar kt1_1=_b[/k1]
 
    nl (justice=1-exp(-(({lambda0}+{lambda1=0}*d1000)*units)^({k0=1}+{k1=0}*d1000))) if treatment==1
-   scalar lambdat2_0=_b[/lambda0]
-   scalar lambdat2_1=_b[/lambda1]
-   scalar kt2_0=_b[/k0]
-   scalar kt2_1=_b[/k1]
+      scalar lambdat2_0=_b[/lambda0]
+      scalar lambdat2_1=_b[/lambda1]
+      scalar kt2_0=_b[/k0]
+      scalar kt2_1=_b[/k1]
 
    collapse (mean) meanjustice=justice d1000 ///
       (sd) sdjustice=justice ///
@@ -112,13 +117,22 @@ graph export "figure_3.pdf", as(pdf) replace
 /* figure 4 */
 use "data_2.dta", clear
 
-line need_a need_b productivity_a productivity_b equal_split case, ///
-   by(scenario, note("") graphregion(fcolor(white))) ///
-   ytitle("Holzscheite") ///
-   ylabel(0 "0" 500 "500" 1000 "1.000" 1500 "1.500" 2000 "2.000") ///
-   saving(figure_4, replace)
-graph export "figure_4.pdf", as(pdf) replace
+preserve
+   la var case "Fall"
+   la var scenario "Szenario"
+   la var productivity_a "Produktivität von Person A"
+   la var productivity_b "Produktivität von Person B"
+   la var need_a "Bedarf von Person A"
+   la var need_b "Bedarf von Person B"
+   la var equal_split "Gleichverteilung"
 
+   line need_a need_b productivity_a productivity_b equal_split case, ///
+      by(scenario, note("") graphregion(fcolor(white))) ///
+      ytitle("Holzscheite") ///
+      ylabel(0 "0" 500 "500" 1000 "1.000" 1500 "1.500" 2000 "2.000") ///
+      saving(figure_4, replace)
+   graph export "figure_4.pdf", as(pdf) replace
+restore
 
 /* figure 5 */
 use "data_3.dta", clear
