@@ -1,5 +1,3 @@
-cd "/Users/amb/Desktop/GitHub/need-dissertation/figures"
-
 /* header */
 version 14.2
 
