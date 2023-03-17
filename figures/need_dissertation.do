@@ -836,6 +836,7 @@ graph export "figure_17.pdf", as(pdf) replace
 
 
 /* figure 18 */
+set scheme s1color
 global barchart_options = "lcolor(black) lpattern(solid) lwidth(medium)"
 
 preserve
