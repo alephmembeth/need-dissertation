@@ -1,6 +1,9 @@
 # macOS
 *.DS_Store
 
+# Stata
+*.gph
+
 # LaTeX auxiliary files
 *.aux
 *.lof
