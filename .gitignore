@@ -13,6 +13,8 @@
 *.fot
 *.cb
 *.cb2
+*.naf
+*.snm
 .*.lb
 
 # Bibliography auxiliary files
