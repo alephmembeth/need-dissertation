@@ -79,27 +79,163 @@ restore
 
 
 /* figure 3 */
-twoway (connected justice units if treatment == 0, mcolor(black) lpattern(solid)), ///
-   by(subject, note("") graphregion(color(white)) cols(7)) ///
-   xtitle("Wohnraum") ///
-   xlabel(0 "0" 500 "500" 1000 "1.000" 1500 "1.500" 2000 "2.000", labsize(huge) angle(forty_five)) ///
-   xline(1000, lcolor(gs10) lpattern(s)) ///
-   ytitle("Einschätzung") ///
-   ylabel(0 "0" 0.5 "0,5" 1 "1", labsize(huge) angle(horizontal)) ///
-   saving(figure_3, replace)
-graph export "figure_3.pdf", as(pdf) replace
+gen justice_type_finegrained = .
+   replace justice_type_finegrained = 1 if ///
+      subject ==   2 | ///
+      subject ==  14 | ///
+      subject ==  15 | ///
+      subject ==  19 | ///
+      subject ==  26 | ///
+      subject ==  36 | ///
+      subject ==  37 | ///
+      subject ==  42 | ///
+      subject ==  62 | ///
+      subject ==  80	  
+   replace justice_type_finegrained = 2 if ///
+      subject ==  20 | ///
+      subject ==  27 | ///
+      subject ==  28 | ///
+      subject ==  41 | ///
+      subject ==  57 | ///
+      subject ==  65 | ///
+      subject ==  75 | ///
+      subject ==  89 | ///
+      subject ==  94
+   replace justice_type_finegrained = 3 if ///
+      subject ==   1 | ///
+      subject ==  17 | ///
+      subject ==  32 | ///
+      subject ==  40 | ///
+      subject ==  44 | ///
+      subject ==  47 | ///
+      subject ==  51 | ///
+      subject ==  64	  
+   replace justice_type_finegrained = 4 if ///
+      subject ==   3 | ///
+      subject ==   5 | ///
+      subject ==  10 | ///
+      subject ==  11 | ///
+      subject ==  12 | ///
+      subject ==  13 | ///
+      subject ==  23 | ///
+      subject ==  25 | ///
+      subject ==  29 | ///
+      subject ==  30 | ///
+      subject ==  31 | ///
+      subject ==  35 | ///
+      subject ==  45 | ///
+      subject ==  48 | ///
+      subject ==  50 | ///
+      subject ==  55 | ///
+      subject ==  63 | ///
+      subject ==  71 | ///
+      subject ==  72 | ///
+      subject == 102
+   replace justice_type_finegrained = 5 if ///
+      subject ==   4 | ///
+      subject ==   6 | ///
+      subject ==   7 | ///
+      subject ==   8 | ///
+      subject ==   9 | ///
+      subject ==  16 | ///
+      subject ==  18 | ///
+      subject ==  21 | ///
+      subject ==  22 | ///
+      subject ==  24 | ///
+      subject ==  34 | ///
+      subject ==  38 | ///
+      subject ==  39 | ///
+      subject ==  43 | ///
+      subject ==  46 | ///
+      subject ==  49 | ///
+      subject ==  52 | ///
+      subject ==  53 | ///
+      subject ==  54 | ///
+      subject ==  58 | ///
+      subject ==  59 | ///
+      subject ==  60 | ///
+      subject ==  61 | ///
+      subject ==  66 | ///
+      subject ==  67 | ///
+      subject ==  68 | ///
+      subject ==  69 | ///
+      subject ==  73 | ///
+      subject ==  76 | ///
+      subject ==  77 | ///
+      subject ==  79 | ///
+      subject ==  81 | ///
+      subject ==  82 | ///
+      subject ==  83 | ///
+      subject ==  84 | ///
+      subject ==  85 | ///
+      subject ==  87 | ///
+      subject ==  88 | ///
+      subject ==  90 | ///
+      subject ==  91 | ///
+      subject ==  92 | ///
+      subject ==  93 | ///
+      subject ==  95 | ///
+      subject ==  97 | ///
+      subject ==  98 | ///
+      subject ==  99 | ///
+      subject == 100 | ///
+      subject == 101 | ///
+      subject == 104 | ///
+      subject == 105 | ///
+      subject == 106 | ///
+      subject == 107 | ///
+      subject == 108
+   replace justice_type_finegrained = 6 if ///
+      subject ==  33 | ///
+      subject ==  56 | ///
+      subject ==  70 | ///
+      subject ==  74 | ///
+      subject ==  78 | ///
+      subject ==  86 | ///
+      subject ==  96 | ///
+      subject == 103 | ///
+      subject == 109
+
+label variable justice_type_finegrained "Typ"
+
+label define justice_type_finegrained_lb 1 "Hügel" 2 "Binär" 3 "Flach ab" 4 "Null unterhalb" 5 "Ansteigend" 6 "Anderes"
+   label values justice_type_finegrained justice_type_finegrained_lb
+
+preserve
+   collapse (first) justice_type_finegrained treatment, by(subject)
+   
+   tabulate justice_type_finegrained treatment, cell
+restore
+
+preserve
+   keep if treatment == 0
+
+   twoway (connected justice units, mcolor(black) lpattern(solid)), ///
+      by(justice_type_finegrained subject, note("") graphregion(color(white)) cols(7)) ///
+      xtitle("Wohnraum") ///
+      xlabel(0 "0" 500 "500" 1000 "1.000" 1500 "1.500" 2000 "2.000", labsize(huge) angle(forty_five)) ///
+      xline(1000, lcolor(gs10) lpattern(s)) ///
+      ytitle("Einschätzung") ///
+      ylabel(0 "0" 0.5 "0,5" 1 "1", labsize(huge) angle(horizontal)) ///
+      saving(figure_3, replace)
+   graph export "figure_3.pdf", as(pdf) replace
+restore
 
 
 /* figure 4 */
-twoway (connected justice units if treatment == 1, mcolor(black) lpattern(solid)), ///
-   by(subject, note("") graphregion(color(white)) cols(7)) ///
-   xtitle("Wohnraum") ///
-   xlabel(0 "0" 500 "500" 1000 "1.000" 1500 "1.500" 2000 "2.000", labsize(huge) angle(forty_five)) ///
-   xline(1000, lcolor(gs10) lpattern(s)) ///
-   ytitle("Einschätzung") ///
-   ylabel(0 "0" 0.5 "0,5" 1 "1", labsize(huge) angle(horizontal)) ///
-   saving(figure_4, replace)
-graph export "figure_4.pdf", as(pdf) replace
+preserve
+   keep if treatment == 1
+
+   twoway (connected justice units, mcolor(black) lpattern(solid)), ///
+      by(justice_type_finegrained subject, note("") graphregion(color(white)) cols(7)) ///
+      xtitle("Wohnraum") ///
+      xlabel(0 "0" 500 "500" 1000 "1.000" 1500 "1.500" 2000 "2.000", labsize(huge) angle(forty_five)) ///
+      xline(1000, lcolor(gs10) lpattern(s)) ///
+      ytitle("Einschätzung") ///
+      ylabel(0 "0" 0.5 "0,5" 1 "1", labsize(huge) angle(horizontal)) ///
+      saving(figure_4, replace)
+   graph export "figure_4.pdf", as(pdf) replace
+restore
 
 
 /* figure 5 */
