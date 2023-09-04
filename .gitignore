@@ -13,8 +13,6 @@
 *.fot
 *.cb
 *.cb2
-*.nav
-*.snm
 .*.lb
 
 # Bibliography auxiliary files
@@ -32,3 +30,7 @@
 *.synctex.gz
 *.synctex.gz(busy)
 *.pdfsync
+
+# Beamer auxiliary files
+*.nav
+*.snm
