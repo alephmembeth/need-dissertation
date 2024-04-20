@@ -1,6 +1,6 @@
 # Empirische Studien zu Fragen der Bedarfsgerechtigkeit
 
-This is a repository for my cumulative dissertation titled “Empirische Studien zu Fragen der Bedarfsgerechtigkeit”.
+This is a repository for my cumulative dissertation titled “Empirische Studien zu Fragen der Bedarfsgerechtigkeit” (empirical studies on questions of need-based distributive justice).
 
 - The umbrella document is available as `need_dissertation_paper.pdf`. The dissertation has been published on the University of Oldenburg’s online publication server.[^1]
 - The umbrella document’s text has been published as a book which is available as `need_dissertation_book.pdf`.[^2]
