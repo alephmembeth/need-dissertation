@@ -38,16 +38,16 @@ preserve
           (scatter meanjustice units if treatment == 1, mcolor(gs8) msize(medium) msymbol(square)) ///
           (rcap ci_high ci_low units if treatment == 1, lcolor(gs8)), ///
           title("") ///
-          xtitle("Wohnraum") ///
-          xlabel(0 "0" 500 "500" 1000 "1.000" 1500 "1.500" 2000 "2.000", angle(forty_five)) ///
+          xtitle("Living Space") ///
+          xlabel(0 "0" 500 "500" 1000 "1,000" 1500 "1,500" 2000 "2,000", angle(forty_five)) ///
           xline(1000, lcolor(gs10) lpattern(dash)) ///
-          ytitle("Einschätzung") ///
-          ylabel(0 "0" 0.2 "0,2" 0.4 "0,4" 0.6 "0,6" 0.8 "0,8" 1 "1", angle(horizontal)) ///
-          text(0.95 1000 "Bedarfsschwelle", place(l)) ///
-          legend(pos(5) ring(0) col(1) order(1 3) label(1 "Bedarfsgruppe") label(3 "Kontrollgruppe")) ///
+          ytitle("Evaluation") ///
+          ylabel(0 "0" 0.2 "0.2" 0.4 "0.4" 0.6 "0.6" 0.8 "0.8" 1 "1", angle(horizontal)) ///
+          text(0.95 1000 "Need Threshold", place(l)) ///
+          legend(pos(5) ring(0) col(1) order(1 3) label(1 "Need Group") label(3 "Control Group")) ///
           graphregion(color(white)) ///
-          saving(figure_1, replace)
-   graph export "figure_1.pdf", as(pdf) replace
+          saving(figure_1_english, replace)
+   graph export "figure_1_english.pdf", as(pdf) replace
 restore
 
 
