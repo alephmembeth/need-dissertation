@@ -1,3 +1,5 @@
+cd "/Users/amb/Desktop/GitHub/need-dissertation/figures"
+
 /* header */
 version 14.2
 
@@ -5,7 +7,7 @@ set more off, permanently
 set scheme s2mono
 
 
-/* figure 1 */
+/* figure 1 english */
 use "data_1.dta", clear
 
 preserve
@@ -51,7 +53,7 @@ preserve
 restore
 
 
-/* figure 2 */
+/* figure 2 english */
 preserve
    drop if units == 2000
 
@@ -65,16 +67,16 @@ preserve
           (connected meanjustice units if treatment == 0, lcolor(black) lpattern(solid) mcolor(black) msize(medium) msymbol(diamond)) ///
           (connected meanjustice units if treatment == 1, lcolor(gs10) lpattern(dash) mcolor(gs10) msize(medium) msymbol(square)), ///
           title("") ///
-          xtitle("Wohnraum") ///
-          xlabel(0 "0, 200" 200 "200, 400" 400 "400, 600" 600 "600, 800" 800 "800, 1.000" 1000 "1.000, 1.200" 1200 "1.200, 1.400" 1400 "1.400, 1.600" 1600 "1.600, 1.800" 1800 "1.800, 2.000", angle(forty_five)) ///
+          xtitle("Living Space") ///
+          xlabel(0 "0, 200" 200 "200, 400" 400 "400, 600" 600 "600, 800" 800 "800, 1,000" 1000 "1,000, 1,200" 1200 "1,200, 1,400" 1400 "1,400, 1,600" 1600 "1,600, 1,800" 1800 "1,800, 2,000", angle(forty_five)) ///
           xline(800, lcolor(gs10) lpattern(dash)) ///
-          ytitle("Einschätzung") ///
+          ytitle("Evaluation") ///
           ylabel(0 (1) 8, angle(horizontal)) ///
-          text(0.5 800 "Bedarfsschwelle", place(l)) ///
-          legend(pos(5) ring(0) col(1) order(3 4) label(3 "Bedarfsgruppe") label(4 "Kontrollgruppe")) ///
+          text(0.5 800 "Need Threshold", place(l)) ///
+          legend(pos(5) ring(0) col(1) order(3 4) label(3 "Need Group") label(4 "Control Group")) ///
           graphregion(color(white)) ///
-          saving(figure_2, replace)
-   graph export "figure_2.pdf", as(pdf) replace
+          saving(figure_2_english, replace)
+   graph export "figure_2_english.pdf", as(pdf) replace
 restore
 
 
