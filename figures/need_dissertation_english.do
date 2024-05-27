@@ -1,5 +1,3 @@
-cd "/Users/amb/Desktop/GitHub/need-dissertation/figures"
-
 /* header */
 version 14.2
 
@@ -80,7 +78,7 @@ preserve
 restore
 
 
-/* figure 3 */
+/* figure 3 english */
 gen justice_type_finegrained = .
    replace justice_type_finegrained = 1 if ///
       subject ==   2 | ///
@@ -200,7 +198,7 @@ gen justice_type_finegrained = .
 
 label variable justice_type_finegrained "Typ"
 
-label define justice_type_finegrained_lb 1 "Hügel" 2 "Binär" 3 "Flach ab" 4 "Null unterhalb" 5 "Ansteigend" 6 "Anderes"
+label define justice_type_finegrained_lb 1 "Hump" 2 "Binary" 3 "Flat Above" 4 "Zero Below" 5 "Increasing" 6 "Other"
    label values justice_type_finegrained justice_type_finegrained_lb
 
 preserve
@@ -214,13 +212,13 @@ preserve
 
    twoway (connected justice units, mcolor(black) lpattern(solid)), ///
       by(justice_type_finegrained subject, note("") graphregion(color(white)) cols(7)) ///
-      xtitle("Wohnraum") ///
-      xlabel(0 "0" 500 "500" 1000 "1.000" 1500 "1.500" 2000 "2.000", labsize(huge) angle(forty_five)) ///
+      xtitle("Living Space") ///
+      xlabel(0 "0" 500 "500" 1000 "1,000" 1500 "1,500" 2000 "2,000", labsize(huge) angle(forty_five)) ///
       xline(1000, lcolor(gs10) lpattern(s)) ///
-      ytitle("Einschätzung") ///
-      ylabel(0 "0" 0.5 "0,5" 1 "1", labsize(huge) angle(horizontal)) ///
-      saving(figure_3, replace)
-   graph export "figure_3.pdf", as(pdf) replace
+      ytitle("Evaluation") ///
+      ylabel(0 "0" 0.5 "0.5" 1 "1", labsize(huge) angle(horizontal)) ///
+      saving(figure_3_english, replace)
+   graph export "figure_3_english.pdf", as(pdf) replace
 restore
 
 
