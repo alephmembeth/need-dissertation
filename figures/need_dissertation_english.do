@@ -196,7 +196,7 @@ gen justice_type_finegrained = .
       subject == 103 | ///
       subject == 109
 
-label variable justice_type_finegrained "Typ"
+label variable justice_type_finegrained "Type"
 
 label define justice_type_finegrained_lb 1 "Hump" 2 "Binary" 3 "Flat Above" 4 "Zero Below" 5 "Increasing" 6 "Other"
    label values justice_type_finegrained justice_type_finegrained_lb
@@ -222,40 +222,40 @@ preserve
 restore
 
 
-/* figure 4 */
+/* figure 4 english */
 preserve
    keep if treatment == 1
 
    twoway (connected justice units, mcolor(black) lpattern(solid)), ///
       by(justice_type_finegrained subject, note("") graphregion(color(white)) cols(7)) ///
-      xtitle("Wohnraum") ///
-      xlabel(0 "0" 500 "500" 1000 "1.000" 1500 "1.500" 2000 "2.000", labsize(huge) angle(forty_five)) ///
+      xtitle("Living Space") ///
+      xlabel(0 "0" 500 "500" 1000 "1,000" 1500 "1,500" 2000 "2,000", labsize(huge) angle(forty_five)) ///
       xline(1000, lcolor(gs10) lpattern(s)) ///
-      ytitle("Einschätzung") ///
-      ylabel(0 "0" 0.5 "0,5" 1 "1", labsize(huge) angle(horizontal)) ///
-      saving(figure_4, replace)
-   graph export "figure_4.pdf", as(pdf) replace
+      ytitle("Evaluation") ///
+      ylabel(0 "0" 0.5 "0.5" 1 "1", labsize(huge) angle(horizontal)) ///
+      saving(figure_4_english, replace)
+   graph export "figure_4_english.pdf", as(pdf) replace
 restore
 
 
-/* figure 5 */
+/* figure 5 english */
 use "data_2.dta", clear
 
 preserve
-   la var case "Fall"
-   la var scenario "Szenario"
-   la var productivity_a "Produktivität von Person A"
-   la var productivity_b "Produktivität von Person B"
-   la var need_a "Bedarf von Person A"
-   la var need_b "Bedarf von Person B"
-   la var equal_split "Gleichverteilung"
+   la var case "Case"
+   la var scenario "Scenario"
+   la var productivity_a "Person A's Productivity"
+   la var productivity_b "Person B's Productivity"
+   la var need_a "Person A's Need"
+   la var need_b "Person B's Need"
+   la var equal_split "Equal Distribution"
 
    line need_a need_b productivity_a productivity_b equal_split case, ///
       by(scenario, note("") graphregion(fcolor(white))) ///
-      ytitle("Holzscheite") ///
-      ylabel(0 "0" 500 "500" 1000 "1.000" 1500 "1.500" 2000 "2.000", angle(horizontal)) ///
-      saving(figure_5, replace)
-   graph export "figure_5.pdf", as(pdf) replace
+      ytitle("Logs") ///
+      ylabel(0 "0" 500 "500" 1000 "1,000" 1500 "1,500" 2000 "2,000", angle(horizontal)) ///
+      saving(figure_5_english, replace)
+   graph export "figure_5_english.pdf", as(pdf) replace
 restore
 
 
