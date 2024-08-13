@@ -295,16 +295,16 @@ preserve
           (pci `pposition1' 3.25 `pposition' 3.25, lcolor(black)) ///
           (pci `pposition'  3.25 `pposition' 3.05, lcolor(black)), ///
           title("") ///
-          xtitle("Szenario und Gruppe") ///
-          xlabel(0 `""Bedarf," "Niedrige" "Verantw.""' 1 `""Bedarf," "Hohe" "Verantw.""' 2.25 `""Produktivität," "Niedrige" "Verantw.""' 3.25 `""Produktivität," "Hohe" "Verantw.""') ///
+          xtitle("Scenario and Group") ///
+          xlabel(0 `""Need," "Low" "Account.""' 1 `""Need," "High" "Account.""' 2.25 `""Productivity," "Low" "Account.""' 3.25 `""Productivity," "High" "Account.""') ///
           ytitle("Einschätzung") ///
           yscale(range(1 `ylim')) ///
           ylabel(1 (1) `pposition', angle(horizontal)) ///
-          text(`pposition' 0.5 "p {&le} 0,01", place(c)) text(`pposition' 2.75 "p {&le} 0,01", place(c)) ///
+          text(`pposition' 0.5 "p {&le} 0.01", place(c)) text(`pposition' 2.75 "p {&le} 0.01", place(c)) ///
           legend(off) ///
           graphregion(color(white)) ///
           saving(figure_6, replace)
-   graph export "figure_6.pdf", as(pdf) replace
+   graph export "figure_5_english.pdf", as(pdf) replace
 restore
 
 
