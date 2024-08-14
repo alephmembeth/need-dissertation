@@ -297,7 +297,7 @@ preserve
           title("") ///
           xtitle("Scenario and Group") ///
           xlabel(0 `""Need," "Low" "Account.""' 1 `""Need," "High" "Account.""' 2.25 `""Productivity," "Low" "Account.""' 3.25 `""Productivity," "High" "Account.""') ///
-          ytitle("Einschätzung") ///
+          ytitle("Evaluation") ///
           yscale(range(1 `ylim')) ///
           ylabel(1 (1) `pposition', angle(horizontal)) ///
           text(`pposition' 0.5 "p {&le} 0.01", place(c)) text(`pposition' 2.75 "p {&le} 0.01", place(c)) ///
@@ -335,15 +335,15 @@ preserve
           (pci 0.283  1.80 0.283 2.70, lpattern(dash) lcolor(black)) ///
           (pci 0.283  2.80 0.283 3.70, lpattern(dash) lcolor(black)), ///
           title("") ///
-          xtitle("Szenario und Gruppe", size(large)) ///
-          xlabel(0 `""Bedarf," "Niedrige" "Verantw.""' 1 `""Bedarf," "Hohe" "Verantw.""' 2.25 `""Produktivität," "Niedrige" "Verantw.""' 3.25 `""Produktivität," "Hohe" "Verantw.""', labsize(medlarge)) ///
-          ytitle("Anteil", size(large)) ///
+          xtitle("Scenario and Group", size(large)) ///
+          xlabel(0 `""Need," "Low" "Account.""' 1 `""Need," "High" "Account.""' 2.25 `""Productivity," "Low" "Account.""' 3.25 `""Productivity," "High" "Account.""', labsize(medlarge)) ///
+          ytitle("Share", size(large)) ///
           yscale(range(0 (0.1) 0.7)) ///
           ylabel(0 "0" 0.1 "0,1" 0.2 "0,2" 0.3 "0,3" 0.4 "0,4" 0.5 "0,5" 0.6 "0,6" 0.7 "0,7", labsize(medlarge) angle(horizontal)) ///
           legend(off) ///
           graphregion(color(white)) ///
           saving(figure_7_a, replace)
-   graph export "figure_7_a.pdf", as(pdf) replace
+   graph export "figure_7_a_english.pdf", as(pdf) replace
 restore
 
 
