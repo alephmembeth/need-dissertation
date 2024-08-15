@@ -259,7 +259,7 @@ preserve
 restore
 
 
-/* figure 6 */
+/* figure 6 english */
 use "data_3.dta", clear
 
 preserve
@@ -304,11 +304,11 @@ preserve
           legend(off) ///
           graphregion(color(white)) ///
           saving(figure_6, replace)
-   graph export "figure_5_english.pdf", as(pdf) replace
+   graph export "figure_6_english.pdf", as(pdf) replace
 restore
 
 
-/* figure 7 (a) */
+/* figure 7 (a) english */
 use "data_4.dta", clear
 
 preserve
@@ -347,7 +347,7 @@ preserve
 restore
 
 
-/* figure 7 (b) */
+/* figure 7 (b) english */
 preserve
    gen deviation_a = .
       replace deviation_a = (share_a - 0.5) / (share_need_a - 0.5) if scenario == 0
@@ -368,25 +368,25 @@ preserve
           (scatter meanj tnr if treatment == 0, msymbol(square) mfcolor(gs10) mlcolor(black) msize(large)) ///
           (scatter meanj tnr if treatment == 1, msymbol(diamond) mfcolor(white) mlcolor(black) msize(large)), ///
           title("") ///
-          xtitle("Szenario und Gruppe", size(large)) ///
+          xtitle("Scenario and Group", size(large)) ///
           xscale(range(-0.5 3.75)) ///
-          xlabel(0 `""Bedarf," "Niedrige" "Verantw.""' 1 `""Bedarf," "Hohe" "Verantw.""' 2.25 `""Produktivität," "Niedrige" "Verantw.""' 3.25 `""Produktivität," "Hohe" "Verantw.""', labsize(medlarge)) ///
-          ytitle("Abweichung", size(large)) ///
+          xlabel(0 `""Need," "Low" "Account.""' 1 `""Need," "High" "Account.""' 2.25 `""Productivity," "Low" "Account.""' 3.25 `""Productivity," "High" "Account.""', labsize(medlarge)) ///
+          ytitle("Deviation", size(large)) ///
           yscale(range(0 (0.1) 1.0)) ///
           ylabel(0 "0" 0.1 "0,1" 0.2 "0,2" 0.3 "0,3" 0.4 "0,4" 0.5 "0,5" 0.6 "0,6" 0.7 "0,7" 0.8 "0,8" 0.9 "0,9" 1 "1", labsize(medlarge) angle(horizontal)) ///
           legend(off) ///
           graphregion(color(white)) ///
           saving(figure_7_b, replace)
-   graph export "figure_7_b.pdf", as(pdf) replace
+   graph export "figure_7_b_english.pdf", as(pdf) replace
 restore
 
 
-/* figure 7 (c) */
+/* figure 7 (c) english */
 preserve
    local ymin = 0.3
    local ymax = 0.9
    local pposition = 0.68
-   local p1 = "p = 0,230"
+   local p1 = "p = 0.230"
 
    keep if scenario == 0
 
@@ -414,19 +414,19 @@ preserve
           (pci 0.71  6.5 0.71  8.5, lpattern(solid) lcolor(black)) ///
           (pci 0.78  9.5 0.78 11.5, lpattern(solid) lcolor(black)) ///
           (pci 0.86 12.5 0.86 14.5, lpattern(solid) lcolor(black)), ///
-          xtitle("Fall (Bedarfsszenario)", size(large)) ///
+          xtitle("Case (Need Scenario)", size(large)) ///
           xlabel(1.5 "1" 4.5 "2" 7.5 "3" 10.5 "4" 13.5 "5", labsize(medlarge)) ///
-          ytitle("Anteil", size(large)) ///
+          ytitle("Share", size(large)) ///
           yscale(range(`ymin' (0.1) `ymax')) ///
           ylabel(0.3 "0,3" 0.4 "0,4" 0.5 "0,5" 0.6 "0,6" 0.7 "0,7" 0.8 "0,8" 0.9 "0,9", labsize(medlarge) angle(horizontal)) ///
           legend(off) ///
           graphregion(color(white)) ///
           saving(figure_7_c, replace)
-   graph export "figure_7_c.pdf", as(pdf) replace
+   graph export "figure_7_c_english.pdf", as(pdf) replace
 restore
 
 
-/* figure 7 (d) */
+/* figure 7 (d) english */
 preserve
    local ymin = 0
    local ymax = 1
@@ -451,16 +451,16 @@ preserve
    twoway (rcap ci_high ci_low rescase, lcolor(black)) ///
           (scatter meanj rescase if treatment == 0, msymbol(square) mfcolor(gs10) mlcolor(black) msize(large)) ///
           (scatter meanj rescase if treatment == 1, msymbol(diamond) mfcolor(white) mlcolor(black) msize(large)), ///
-          xtitle("Fall (Bedarfsszenario)", size(large)) ///
+          xtitle("Case (Need Scenario)", size(large)) ///
           xscale(range(0.5 14.5)) ///
           xlabel(1.5 "1" 4.5 "2" 7.5 "3" 10.5 "4" 13.5 "5", labsize(medlarge)) ///
-          ytitle("Abweichung", size(large)) ///
+          ytitle("Deviation", size(large)) ///
           yscale(range(`ymin' (0.1) `ymax')) ///
           ylabel(0 "0" 0.1 "0,1" 0.2 "0,2" 0.3 "0,3" 0.4 "0,4" 0.5 "0,5" 0.6 "0,6" 0.7 "0,7" 0.8 "0,8" 0.9 "0,9" 1 "1", labsize(medlarge) angle(horizontal)) ///
           legend(off) ///
           graphregion(color(white)) ///
           saving(figure_7_d, replace)
-   graph export "figure_7_d.pdf", as(pdf) replace
+   graph export "figure_7_d_english.pdf", as(pdf) replace
 restore
 
 
