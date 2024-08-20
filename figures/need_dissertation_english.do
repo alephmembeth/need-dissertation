@@ -464,12 +464,12 @@ preserve
 restore
 
 
-/* figure 7 (e) */
+/* figure 7 (e) english */
 preserve
    local ymin = 0.0
    local ymax = 0.6
    local pposition = 0.53
-   local p1 = "p {&le} 0,01"
+   local p1 = "p {&le} 0.01"
 
    keep if scenario == 1
 
@@ -497,19 +497,19 @@ preserve
           (pci 0.29  6.5 0.29  8.5, lpattern(dash) lcolor(black)) ///
           (pci 0.22  9.5 0.22 11.5, lpattern(dash) lcolor(black)) ///
           (pci 0.14 12.5 0.14 14.5, lpattern(dash) lcolor(black)), ///
-          xtitle("Fall (Produktivitätsszenario)", size(large)) ///
+          xtitle("Case (Productivity Scenario)", size(large)) ///
           xlabel(1.5 "1" 4.5 "2" 7.5 "3" 10.5 "4" 13.5 "5", labsize(medlarge)) ///
-          ytitle("Anteil", size(large)) ///
+          ytitle("Share", size(large)) ///
           yscale(range(`ymin' (0.1) `ymax')) ///
-          ylabel(0 "0" 0.1 "0,1" 0.2 "0,2" 0.3 "0,3" 0.4 "0,4" 0.5 "0,5" 0.6 "0,6", labsize(medlarge) angle(horizontal)) ///
+          ylabel(0 "0" 0.1 "0.1" 0.2 "0.2" 0.3 "0.3" 0.4 "0.4" 0.5 "0.5" 0.6 "0.6", labsize(medlarge) angle(horizontal)) ///
           legend(off) ///
           graphregion(color(white)) ///
           saving(figure_7_e, replace)
-   graph export "figure_7_e.pdf", as(pdf) replace
+   graph export "figure_7_e_english.pdf", as(pdf) replace
 restore
 
 
-/* figure 7 (f) */
+/* figure 7 (f) english */
 preserve
    local ymin = 0
    local ymax = 1
@@ -534,16 +534,16 @@ preserve
    twoway (rcap ci_high ci_low rescase, lcolor(black)) ///
           (scatter meanj rescase if treatment == 0, msymbol(square) mfcolor(gs10) mlcolor(black) msize(large)) ///
           (scatter meanj rescase if treatment == 1, msymbol(diamond) mfcolor(white) mlcolor(black) msize(large)), ///
-          xtitle("Fall (Produktivitätsszenario)", size(large)) ///
+          xtitle("Case (Productivity Scenario)", size(large)) ///
           xscale(range(0.5 14.5)) ///
           xlabel(1.5 "1" 4.5 "2" 7.5 "3" 10.5 "4" 13.5 "5", labsize(medlarge)) ///
           ytitle("Abweichung", size(large)) ///
           yscale(range(`ymin' (0.1) `ymax')) ///
-          ylabel(0 "0" 0.1 "0,1" 0.2 "0,2" 0.3 "0,3" 0.4 "0,4" 0.5 "0,5" 0.6 "0,6" 0.7 "0,7" 0.8 "0,8" 0.9 "0,9" 1 "1", labsize(medlarge) angle(horizontal)) ///
+          ylabel(0 "0" 0.1 "0.1" 0.2 "0.2" 0.3 "0.3" 0.4 "0.4" 0.5 "0.5" 0.6 "0.6" 0.7 "0.7" 0.8 "0.8" 0.9 "0.9" 1 "1", labsize(medlarge) angle(horizontal)) ///
           legend(off) ///
           graphregion(color(white)) ///
           saving(figure_7_f, replace)
-   graph export "figure_7_f.pdf", as(pdf) replace
+   graph export "figure_7_f_english.pdf", as(pdf) replace
 restore
 
 
