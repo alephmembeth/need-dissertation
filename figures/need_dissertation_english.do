@@ -39,7 +39,7 @@ preserve
           (rcap ci_high ci_low units if treatment == 1, lcolor(gs8)), ///
           title("") ///
           xtitle("Living Space") ///
-          xlabel(0 "0" 500 "500" 1000 "1,000" 1500 "1,500" 2000 "2,000", angle(forty_five)) ///
+          xlabel(0 "0" 500 "500" 1000 "1000" 1500 "1500" 2000 "2000", angle(forty_five)) ///
           xline(1000, lcolor(gs10) lpattern(dash)) ///
           ytitle("Evaluation") ///
           ylabel(0 "0" 0.2 "0.2" 0.4 "0.4" 0.6 "0.6" 0.8 "0.8" 1 "1", angle(horizontal)) ///
@@ -66,7 +66,7 @@ preserve
           (connected meanjustice units if treatment == 1, lcolor(gs10) lpattern(dash) mcolor(gs10) msize(medium) msymbol(square)), ///
           title("") ///
           xtitle("Living Space") ///
-          xlabel(0 "0, 200" 200 "200, 400" 400 "400, 600" 600 "600, 800" 800 "800, 1,000" 1000 "1,000, 1,200" 1200 "1,200, 1,400" 1400 "1,400, 1,600" 1600 "1,600, 1,800" 1800 "1,800, 2,000", angle(forty_five)) ///
+          xlabel(0 "0, 200" 200 "200, 400" 400 "400, 600" 600 "600, 800" 800 "800, 1000" 1000 "1000, 1200" 1200 "1200, 1400" 1400 "1400, 1600" 1600 "1600, 1800" 1800 "1800, 2000", angle(forty_five)) ///
           xline(800, lcolor(gs10) lpattern(dash)) ///
           ytitle("Evaluation") ///
           ylabel(0 (1) 8, angle(horizontal)) ///
@@ -213,7 +213,7 @@ preserve
    twoway (connected justice units, mcolor(black) lpattern(solid)), ///
       by(justice_type_finegrained subject, note("") graphregion(color(white)) cols(7)) ///
       xtitle("Living Space") ///
-      xlabel(0 "0" 500 "500" 1000 "1,000" 1500 "1,500" 2000 "2,000", labsize(huge) angle(forty_five)) ///
+      xlabel(0 "0" 500 "500" 1000 "1000" 1500 "1500" 2000 "2000", labsize(huge) angle(forty_five)) ///
       xline(1000, lcolor(gs10) lpattern(s)) ///
       ytitle("Evaluation") ///
       ylabel(0 "0" 0.5 "0.5" 1 "1", labsize(huge) angle(horizontal)) ///
@@ -229,7 +229,7 @@ preserve
    twoway (connected justice units, mcolor(black) lpattern(solid)), ///
       by(justice_type_finegrained subject, note("") graphregion(color(white)) cols(7)) ///
       xtitle("Living Space") ///
-      xlabel(0 "0" 500 "500" 1000 "1,000" 1500 "1,500" 2000 "2,000", labsize(huge) angle(forty_five)) ///
+      xlabel(0 "0" 500 "500" 1000 "1000" 1500 "1500" 2000 "2000", labsize(huge) angle(forty_five)) ///
       xline(1000, lcolor(gs10) lpattern(s)) ///
       ytitle("Evaluation") ///
       ylabel(0 "0" 0.5 "0.5" 1 "1", labsize(huge) angle(horizontal)) ///
@@ -242,18 +242,21 @@ restore
 use "data_2.dta", clear
 
 preserve
+   label define scenario_english_lb 0 "Need Scenario" 1 "Productivity Scenario"
+      label values scenario scenario_english_lb
+
    la var case "Case"
    la var scenario "Scenario"
-   la var productivity_a "Person A's Productivity"
-   la var productivity_b "Person B's Productivity"
-   la var need_a "Person A's Need"
-   la var need_b "Person B's Need"
+   la var productivity_a "Person A’s Productivity"
+   la var productivity_b "Person B’s Productivity"
+   la var need_a "Person A’s Need"
+   la var need_b "Person B’s Need"
    la var equal_split "Equal Distribution"
 
    line need_a need_b productivity_a productivity_b equal_split case, ///
       by(scenario, note("") graphregion(fcolor(white))) ///
       ytitle("Logs") ///
-      ylabel(0 "0" 500 "500" 1000 "1,000" 1500 "1,500" 2000 "2,000", angle(horizontal)) ///
+      ylabel(0 "0" 500 "500" 1000 "1000" 1500 "1500" 2000 "2000", angle(horizontal)) ///
       saving(figure_5_english, replace)
    graph export "figure_5_english.pdf", as(pdf) replace
 restore
@@ -339,7 +342,7 @@ preserve
           xlabel(0 `""Need," "Low" "Account.""' 1 `""Need," "High" "Account.""' 2.25 `""Productivity," "Low" "Account.""' 3.25 `""Productivity," "High" "Account.""', labsize(medlarge)) ///
           ytitle("Share", size(large)) ///
           yscale(range(0 (0.1) 0.7)) ///
-          ylabel(0 "0" 0.1 "0,1" 0.2 "0,2" 0.3 "0,3" 0.4 "0,4" 0.5 "0,5" 0.6 "0,6" 0.7 "0,7", labsize(medlarge) angle(horizontal)) ///
+          ylabel(0 "0" 0.1 "0.1" 0.2 "0.2" 0.3 "0.3" 0.4 "0.4" 0.5 "0.5" 0.6 "0.6" 0.7 "0.7", labsize(medlarge) angle(horizontal)) ///
           legend(off) ///
           graphregion(color(white)) ///
           saving(figure_7_a, replace)
@@ -373,7 +376,7 @@ preserve
           xlabel(0 `""Need," "Low" "Account.""' 1 `""Need," "High" "Account.""' 2.25 `""Productivity," "Low" "Account.""' 3.25 `""Productivity," "High" "Account.""', labsize(medlarge)) ///
           ytitle("Deviation", size(large)) ///
           yscale(range(0 (0.1) 1.0)) ///
-          ylabel(0 "0" 0.1 "0,1" 0.2 "0,2" 0.3 "0,3" 0.4 "0,4" 0.5 "0,5" 0.6 "0,6" 0.7 "0,7" 0.8 "0,8" 0.9 "0,9" 1 "1", labsize(medlarge) angle(horizontal)) ///
+          ylabel(0 "0" 0.1 "0.1" 0.2 "0.2" 0.3 "0.3" 0.4 "0.4" 0.5 "0.5" 0.6 "0.6" 0.7 "0.7" 0.8 "0.8" 0.9 "0,9" 1 "1", labsize(medlarge) angle(horizontal)) ///
           legend(off) ///
           graphregion(color(white)) ///
           saving(figure_7_b, replace)
@@ -418,7 +421,7 @@ preserve
           xlabel(1.5 "1" 4.5 "2" 7.5 "3" 10.5 "4" 13.5 "5", labsize(medlarge)) ///
           ytitle("Share", size(large)) ///
           yscale(range(`ymin' (0.1) `ymax')) ///
-          ylabel(0.3 "0,3" 0.4 "0,4" 0.5 "0,5" 0.6 "0,6" 0.7 "0,7" 0.8 "0,8" 0.9 "0,9", labsize(medlarge) angle(horizontal)) ///
+          ylabel(0.3 "0.3" 0.4 "0.4" 0.5 "0.5" 0.6 "0.6" 0.7 "0.7" 0.8 "0.8" 0.9 "0.9", labsize(medlarge) angle(horizontal)) ///
           legend(off) ///
           graphregion(color(white)) ///
           saving(figure_7_c, replace)
@@ -456,7 +459,7 @@ preserve
           xlabel(1.5 "1" 4.5 "2" 7.5 "3" 10.5 "4" 13.5 "5", labsize(medlarge)) ///
           ytitle("Deviation", size(large)) ///
           yscale(range(`ymin' (0.1) `ymax')) ///
-          ylabel(0 "0" 0.1 "0,1" 0.2 "0,2" 0.3 "0,3" 0.4 "0,4" 0.5 "0,5" 0.6 "0,6" 0.7 "0,7" 0.8 "0,8" 0.9 "0,9" 1 "1", labsize(medlarge) angle(horizontal)) ///
+          ylabel(0 "0" 0.1 "0.1" 0.2 "0.2" 0.3 "0.3" 0.4 "0.4" 0.5 "0.5" 0.6 "0.6" 0.7 "0.7" 0.8 "0.8" 0.9 "0.9" 1 "1", labsize(medlarge) angle(horizontal)) ///
           legend(off) ///
           graphregion(color(white)) ///
           saving(figure_7_d, replace)
@@ -547,7 +550,7 @@ preserve
 restore
 
 
-/* figure 8 (a) */
+/* figure 8 (a) english */
 * ssc install estout, replace
 preserve
    xtset subject
@@ -606,21 +609,21 @@ preserve
           (pci `= sp3' 3.1 `= sp3' 3.3, lcolor(black) lwidth(thick)) ///
           (pci `= sp4' 4.1 `= sp4' 4.3, lcolor(black) lwidth(thick)) ///
           (pci `= sp5' 5.1 `= sp5' 5.3, lcolor(black) lwidth(thick)), ///
-          xtitle("Fall", size(large)) ///
+          xtitle("Case", size(large)) ///
           xscale(range(0.75 5.5)) ///
           xlabel(1.1 "1" 2.1 "2" 3.1 "3" 4.1 "4" 5.1 "5", labsize(medlarge)) ///
-          ytitle("Marginaler Effekt von" "Produktivitätsszenario auf Anteil", size(large)) ///
+          ytitle("Marginal Effect of" "Productivity Scenario on Share", size(large)) ///
           yscale(range(-0.2 (0.05) 0)) ///
-          ylabel(-0.25 "– 0,25" -0.2 "– 0,20" -0.15 "– 0,15" -0.1 "– 0,10" -0.05 "– 0,05" 0 "0", labsize(medlarge) angle(horizontal)) ///
+          ylabel(-0.25 "– 0.25" -0.2 "– 0.20" -0.15 "– 0.15" -0.1 "– 0.10" -0.05 "– 0.05" 0 "0", labsize(medlarge) angle(horizontal)) ///
           yline(0, lcolor(black) lpattern(dash)) ///
-          legend(order(2 "Niedrige Verantw." 3 "Hohe Verantw.") size(medlarge) cols(1) ring(0) bplacement(swest)) ///
+          legend(order(2 "Low Accountability" 3 "High Accountability") size(medlarge) cols(1) ring(0) bplacement(swest)) ///
           graphregion(color(white)) ///
           saving(figure_8_a, replace)
-   graph export "figure_8_a.pdf", as(pdf) replace
+   graph export "figure_8_a_english.pdf", as(pdf) replace
 restore
 
 
-/* figure 8 (b) */
+/* figure 8 (b) english */
 preserve
    gen deviation_a = .
       replace deviation_a = (share_a - share_productivity) / (share_need_a - share_productivity_a) if scenario == 0
@@ -664,21 +667,21 @@ preserve
    twoway (rcap _ci_ub _ci_lb _m1, lcolor(black)) ///
           (scatter _margin _m1 if _m2 == 0, msymbol(square) mfcolor(gs10) mlcolor(black) msize(large)) ///
           (scatter _margin _m1 if _m2 == 1, msymbol(diamond) mfcolor(white) mlcolor(black) msize(large)), ///
-          xtitle("Fall", size(large)) ///
+          xtitle("Case", size(large)) ///
           xscale(range(0.75 5.5)) ///
           xlabel(1.1 "1" 2.1 "2" 3.1 "3" 4.1 "4" 5.1 "5", labsize(medlarge)) ///
-          ytitle("Marginaler Effekt von" "Produktivitätsszenario auf Abweichung", size(large)) ///
+          ytitle("Marginal Effect of" "Productivity Scenario on Deviation", size(large)) ///
           yscale(range(-0.6 (0.2) 0.4)) ///
-          ylabel(-0.4 "– 0,4" -0.2 "– 0,2" 0 "0" 0.2 "0,2" 0.4 "0,4", labsize(medlarge) angle(horizontal)) ///
+          ylabel(-0.4 "– 0.4" -0.2 "– 0.2" 0 "0" 0.2 "0.2" 0.4 "0.4", labsize(medlarge) angle(horizontal)) ///
           yline(0, lcolor(black) lpattern(dash)) ///
-          legend(order(2 "Niedrige Verantw." 3 "Hohe Verantw.") size(medlarge) cols(1) ring(0) bplacement(swest)) ///
+          legend(order(2 "Low Accountability" 3 "High Accountability") size(medlarge) cols(1) ring(0) bplacement(swest)) ///
           graphregion(color(white)) ///
           saving(figure_8_b, replace)
-   graph export "figure_8_b.pdf", replace
+   graph export "figure_8_b_english.pdf", replace
 restore
 
 
-/* figure 8 (c) */
+/* figure 8 (c) english */
 preserve
    xtset subject
 
@@ -714,20 +717,20 @@ preserve
    twoway (rcap _ci_ub _ci_lb _at, lcolor(black)) ///
           (scatter _margin _at if _m1 == 0, msymbol(square) mfcolor(gs10) mlcolor(black) msize(large)) ///
           (scatter _margin _at if _m1 == 1, msymbol(diamond) mfcolor(white) mlcolor(black) msize(large)), ///
-          xtitle("Fall", size(large)) ///
+          xtitle("Case", size(large)) ///
           xscale(range(0.75 5.5)) ///
           xlabel(1.1 "1" 2.1 "2" 3.1 "3" 4.1 "4" 5.1 "5", labsize(medlarge)) ///
-          ytitle("Marginaler Effekt von" "Verantw. auf Anteil", size(large)) ///
-          ylabel(-0.15 "– 0,15" -0.1 "– 0,10" -0.05 "– 0,05" 0 "0" 0.05 "0,05", labsize(medlarge) angle(horizontal)) ///
+          ytitle("Marginal Effect of" "Accountability on Share", size(large)) ///
+          ylabel(-0.15 "– 0.15" -0.1 "– 0.10" -0.05 "– 0.05" 0 "0" 0.05 "0.05", labsize(medlarge) angle(horizontal)) ///
           yline(0, lcolor(black) lpattern(dash)) ///
-          legend(order(2 "Bedarfsszenario" 3 "Produktivitätsszenario") size(medlarge) cols(1) ring(0) bplacement(swest)) ///
+          legend(order(2 "Need Scenario" 3 "Productivity Scenario") size(medlarge) cols(1) ring(0) bplacement(swest)) ///
           graphregion(color(white)) ///
           saving(figure_8_c, replace)
-   graph export "figure_8_c.pdf", replace
+   graph export "figure_8_c_english.pdf", replace
 restore
 
 
-/* figure 8 (d) */
+/* figure 8 (d) english */
 preserve
    gen deviation_a = .
       replace deviation_a = (share_a - share_productivity) / (share_need_a - share_productivity_a) if scenario == 0
@@ -771,21 +774,21 @@ preserve
    twoway (rcap _ci_ub _ci_lb _at, lcolor(black)) ///
           (scatter _margin _at if _m1 == 0, msymbol(square) mfcolor(gs10) mlcolor(black) msize(large)) ///
           (scatter _margin _at if _m1 == 1, msymbol(diamond) mfcolor(white) mlcolor(black) msize(large)), ///
-          xtitle("Fall", size(large)) ///
+          xtitle("Case", size(large)) ///
           xscale(range(0.75 5.5)) ///
           xlabel(1.1 "1" 2.1 "2" 3.1 "3" 4.1 "4" 5.1 "5", labsize(medlarge)) ///
-          ytitle("Marginaler Effekt von" "Verantw. auf Abweichung", size(large)) ///
+          ytitle("Marginal Effect of" "Accountability on Deviation", size(large)) ///
           yscale(range(-0.5 (0.1) 0)) ///
-          ylabel(-0.5 "– 0,5" -0.4 "– 0,4" -0.3 "– 0,3" -0.2 "– 0,2" -0.1 "– 0,1" 0 "0", labsize(medlarge) angle(horizontal)) ///
+          ylabel(-0.5 "– 0.5" -0.4 "– 0.4" -0.3 "– 0.3" -0.2 "– 0.2" -0.1 "– 0.1" 0 "0", labsize(medlarge) angle(horizontal)) ///
           yline(0, lcolor(black) lpattern(dash)) ///
-          legend(order(2 "Bedarfsszenario" 3 "Produktivitätsszenario") size(medlarge) cols(1) ring(0) bplacement(swest)) ///
+          legend(order(2 "Need Scenario" 3 "Productivity Scenario") size(medlarge) cols(1) ring(0) bplacement(swest)) ///
           graphregion(color(white)) ///
           saving(figure_8_d, replace)
-   graph export "figure_8_d.pdf", as(pdf) replace
+   graph export "figure_8_d_english.pdf", as(pdf) replace
 restore
 
 
-/* figure 9 */
+/* figure 9 english */
 preserve
    gen dectype = 0
       replace dectype = 1 if share_a <  share_productivity_a - 0.01
@@ -804,7 +807,7 @@ preserve
 
    collapse (count) n = subject (sum) m = dectype2, by(dectype scenario treatment case)
 
-   label define case_lb 1 "Fall 1" 2 "Fall 2" 3 "Fall 3" 4 "Fall 4" 5 "Fall 5"
+   label define case_lb 1 "Case 1" 2 "Case 2" 3 "Case 3" 4 "Case 4" 5 "Case 5"
       label values case case_lb
 
    replace n = n / 91  if treatment == 0
@@ -818,11 +821,11 @@ preserve
           (bar m dectype if scenario == 0, fcolor(gs3) lcolor(none) barwidth(0.4)), ///
           subtitle(, ring(0) pos(1) nobexpand fcolor(white) lcolor(white)) ///
           by(case, cols(1) graphregion(color(white)) note("") legend(pos(5))) ///
-          xtitle("Bedarfsszenario", size(large)) ///
-          xlabel(1.2 "Weniger" 2.2 "Gleichverteilung" 3.2 "Partielle Kompensation" 4.2 "Bedarfsanteil" 5.2 "Mehr", labsize(large) angle(forty_five)) ///
-          ytitle("Relative Häufigkeit", size(large)) ///
-          ylabel(0 "0" 0.2 "0,2" 0.4 "0,4" 0.6 "0,6" 0.8 "0,8", labsize(large) angle(horizontal)) ///
-          legend(order(3 "Nettoauft." 1 "Geringe Verantw.") size(medlarge) region(lwidth(none)) col(2)) ///
+          xtitle("Need Scenario", size(large)) ///
+          xlabel(1.2 "Less" 2.2 "Equal Split" 3.2 "Partial Compensation" 4.2 "Need Share" 5.2 "More", labsize(large) angle(forty_five)) ///
+          ytitle("Relative Frequency", size(large)) ///
+          ylabel(0 "0" 0.2 "0.2" 0.4 "0.4" 0.6 "0.6" 0.8 "0.8", labsize(large) angle(horizontal)) ///
+          legend(order(3 "Net Split" 1 "Low Accountability") size(medlarge) region(lwidth(none)) col(2)) ///
           saving(figure_9_a, replace)
 
    twoway (bar n dectype if treatment == 0 & scenario == 1, fcolor(gs10) lcolor(black) lpattern(solid) lwidth(medium) barwidth(0.4)) ///
@@ -830,19 +833,19 @@ preserve
           (bar m dectype if scenario == 1, fcolor(gs7) lcolor(none) barwidth(0.4)), ///
           subtitle(, ring(0) pos(1) nobexpand fcolor(white) lcolor(white)) ///
           by(case, cols(1) graphregion(color(white)) note("") legend(pos(7))) ///
-          xtitle("Produktivitätsszenario", size(large)) ///
-          xlabel(1.2 "Weniger" 2.2 "Produktivitätsanteil" 3.2 "Partielle Kompensation" 4.2 "Gleichverteilung" 5.2 "Mehr", labsize(large) angle(forty_five)) ///
+          xtitle("Productivity Scenario", size(large)) ///
+          xlabel(1.2 "Less" 2.2 "Productivity Share" 3.2 "Partial Compensation" 4.2 "Equal Split" 5.2 "More", labsize(large) angle(forty_five)) ///
           ytitle("") ///
-          ylabel(0 "0" 0.2 "0,2" 0.4 "0,4" 0.6 "0,6" 0.8 "0,8", labsize(large) angle(horizontal)) ///
-          legend(order(2 "Hohe Verantw." 3 "Tausch") size(medlarge) region(lwidth(none)) col(2)) ///
+          ylabel(0 "0" 0.2 "0.2" 0.4 "0.4" 0.6 "0.6" 0.8 "0.8", labsize(large) angle(horizontal)) ///
+          legend(order(2 "High Accountability" 3 "Swap") size(medlarge) region(lwidth(none)) col(2)) ///
           saving(figure_9_b, replace)
           graph combine figure_9_a.gph figure_9_b.gph, col(2) graphregion(color(white)) xsize(4) altshrink ///
           saving(figure_9, replace)
-   graph export "figure_9.pdf", as(pdf) replace
+   graph export "figure_9_english.pdf", as(pdf) replace
 restore
 
 
-/* figure 10 */
+/* figure 10 english */
 preserve
    gen dectype = 0
       replace dectype = 1 if share_a <  share_productivity_a - 0.01
@@ -905,77 +908,96 @@ preserve
 
    twoway (bar n stype if treatment == 0 & scenario == 0, fcolor(gs10) lcolor(black) lpattern(solid) lwidth(medium) barwidth(0.4)) ///
           (bar n stype if treatment == 1 & scenario == 0, fcolor(gs14) lcolor(black) lpattern(solid) lwidth(medium) barwidth(0.4)), ///
-          xtitle("Bedarfsszenario", size(large)) ///
+          xtitle("Need Scenario", size(large)) ///
           xscale(range(0.7 4.5)) ///
-          xlabel(1.2 "Gleichverteilung" 2.2 "Partielle Kompensation" 3.2 "Bedarfsanteil" 4.2 "Nettoaufteilung", labsize(medlarge) angle(forty_five)) ///
-          ytitle("Relative Häufigkeit", size(large)) ///
+          xlabel(1.2 "Equal Split" 2.2 "Partial Compensation" 3.2 "Need Share" 4.2 "Net Split", labsize(medlarge) angle(forty_five)) ///
+          ytitle("Relative Frequency", size(large)) ///
           yscale(range(0 0.4)) ///
-          ylabel(0 "0" 0.1 "0,1" 0.2 "0,2" 0.3 "0,3" 0.4 "0,4", labsize(medlarge) angle(horizontal)) ///
-          legend(order(1 "Geringe Verantw.") size(medlarge) region(lwidth(none)) col(1) pos(5)) ///
+          ylabel(0 "0" 0.1 "0.1" 0.2 "0.2" 0.3 "0.3" 0.4 "0.4", labsize(medlarge) angle(horizontal)) ///
+          legend(order(1 "Low Accountability") size(medlarge) region(lwidth(none)) col(1) pos(5)) ///
           graphregion(color(white)) ///
           saving(figure_10_a, replace)
 
    twoway (bar n stype if treatment == 0 & scenario == 1, fcolor(gs10) lcolor(black) lpattern(solid) lwidth(medium) barwidth(0.4)) ///
           (bar n stype if treatment == 1 & scenario == 1, fcolor(gs14) lcolor(black) lpattern(solid) lwidth(medium) barwidth(0.4)), ///
-          xtitle("Produktivitätsszenario", size(large)) ///
-          xlabel(1.2 "Gleichverteilung" 2.2 "Partielle Kompensation" 3.2 "Produktivitätsanteil" 4.2 "Tausch", labsize(medlarge) angle(forty_five)) ///
+          xtitle("Productivity Scenario", size(large)) ///
+          xlabel(1.2 "Equal Split" 2.2 "Partial Compensation" 3.2 "Productivity Share" 4.2 "Swap", labsize(medlarge) angle(forty_five)) ///
           xscale(range(0.7 4.5)) ///
           ytitle("") ///
           yscale(range(0 0.4)) ///
-          ylabel(0 "0" 0.1 "0,1" 0.2 "0,2" 0.3 "0,3" 0.4 "0,4", labsize(medlarge) angle(horizontal)) ///
-          legend(order(2 "Hohe Verantw.") size(medlarge) region(lwidth(none)) col(1) pos(7)) ///
+          ylabel(0 "0" 0.1 "0.1" 0.2 "0.2" 0.3 "0.3" 0.4 "0.4", labsize(medlarge) angle(horizontal)) ///
+          legend(order(2 "High Accountability") size(medlarge) region(lwidth(none)) col(1) pos(7)) ///
           graphregion(color(white)) ///
           saving(figure_10_b, replace)
 
    graph combine figure_10_a.gph figure_10_b.gph, col(2) graphregion(color(white)) ycommon ///
       saving(figure_10, replace)
-   graph export "figure_10.pdf", as(pdf) replace
+   graph export "figure_10_english.pdf", as(pdf) replace
 restore
 
 
-/* figure 15 */
+/* figure 15 english */
 * ssc install cibar, replace
 use "data_5.dta", clear
 
 cibar eval, over1(kind_of_need) graphopts( ///
-   xtitle("Bedarfsart") ///
-   xlabel(1 "Überleben " 2 "Würde " 3 "Teilhabe " 4 "Autonomie ", angle(forty_five)) ///
-   ytitle("Einschätzung") ///
+   xtitle("Kind of Need") ///
+   xlabel(1 "Survival " 2 "Decency " 3 "Belonging " 4 "Autonomy ", angle(forty_five)) ///
+   ytitle("Importance") ///
    ylabel(, angle(horizontal)) ///
    legend(off)) ///
    baropts(lcolor(black) lpattern(solid) lwidth(medium) graphregion(color(white)))
-graph export "figure_15.pdf", as(pdf) replace
+graph export "figure_15_english.pdf", as(pdf) replace
 
 
-/* figure 16 */
+/* figure 16 english */
 use "data_6.dta", clear
 
-cibar allocation_diff, over2(kind_of_need) over1(productivity) graphopts( ///
-   xtitle("Bedarfsart") ///
-   xlabel(, angle(forty_five)) ///
-   ytitle("Durchschnittliche Differenz") ///
-   ylabel(-300 "– 300" -200 "– 200" -100 "– 100" 0 "0" 100 "100", angle(horizontal))) ///
-   baropts(lcolor(black) lpattern(solid) lwidth(medium) graphregion(color(white)))
-graph export "figure_16.pdf", as(pdf) replace
+preserve
+   label define productivity_english_lb 0 "Equal Productivity" 1 "Unequal Productivity"
+      label values productivity productivity_english_lb
+
+   label define kind_of_need_english_lb 1 "Survival" 2 "Decency" 3 "Belonging" 4 "Autonomy"
+      label values kind_of_need kind_of_need_english_lb
+
+   cibar allocation_diff, over2(kind_of_need) over1(productivity) graphopts( ///
+      xtitle("Paired Case") ///
+      xlabel(, angle(forty_five)) ///
+      ytitle("Difference") ///
+      ylabel(-300 "– 300" -200 "– 200" -100 "– 100" 0 "0" 100 "100", angle(horizontal))) ///
+      baropts(lcolor(black) lpattern(solid) lwidth(medium) graphregion(color(white)))
+   graph export "figure_16_english.pdf", as(pdf) replace
+restore
 
 
-/* figure 17 */
+/* figure 17 english */
 use "data_7.dta", clear
 
-cibar allocation_diff, over2(case) over1(productivity) graphopts( ///
-   xtitle("Kombinationen") ///
-   xlabel(, angle(forty_five)) ///
-   ytitle("Durchschnittliche Differenz") ///
-   ylabel(-200 "– 200" 0 "0" 200 "200" 400 "400" 600 "600", angle(horizontal))) ///
-   baropts(lcolor(black) lpattern(solid) lwidth(medium) graphregion(color(white)))
-graph export "figure_17.pdf", as(pdf) replace
+preserve
+   label define productivity_english_lb 0 "Equal Productivity" 1 "Unequal Productivity"
+      label values productivity productivity_english_lb
+
+   label define case_english_lb 0 "Survival – Autonomy" 1 "Survival – Belonging" 2 "Decency – Autonomy" 3 "Decency – Belonging" 4 "Survival – Decency" 5 "Belonging – Autonomy"
+      label values case case_english_lb
+
+   cibar allocation_diff, over2(case) over1(productivity) graphopts( ///
+      xtitle("Mixed Case") ///
+      xlabel(, angle(forty_five)) ///
+      ytitle("Difference") ///
+      ylabel(-200 "– 200" 0 "0" 200 "200" 400 "400" 600 "600", angle(horizontal))) ///
+      baropts(lcolor(black) lpattern(solid) lwidth(medium) graphregion(color(white)))
+   graph export "figure_17_english.pdf", as(pdf) replace
+restore
 
 
-/* figure 18 */
+/* figure 18 english */
 set scheme s1color
 global barchart_options = "lcolor(black) lpattern(solid) lwidth(medium)"
 
 preserve
+   label define productivity_english_lb 0 "Equal Productivity" 1 "Unequal Productivity"
+      label values productivity productivity_english_lb
+
    reshape wide allocation_diff, i(id productivity) j(case)
 
    ren allocation_diff0 s_a
@@ -1017,12 +1039,12 @@ preserve
       (count) n_1 = breakdown_sum_1 n_2 = breakdown_sum_2 n_3 = breakdown_sum_3 n_4 = breakdown_sum_4 n_5 = breakdown_sum_5 n_6 = breakdown_sum_6 n_7 = breakdown_sum_7 n_8 = breakdown_sum_8, ///
       by(breakdown productivity)
 
-   label variable s_a "Überleben – Autonomie"
-   label variable s_b "Überleben – Teilhabe"
-   label variable d_a "Würde – Autonomie"
-   label variable d_b "Würde – Teilhabe"
-   label variable s_d "Überleben – Würde"
-   label variable b_a "Teilhabe – Autonomie"
+   label variable s_a "Survival – Autonomy"
+   label variable s_b "Survival – Belonging"
+   label variable d_a "Decency – Autonomy"
+   label variable d_b "Decency – Belonging"
+   label variable s_d "Survival – Decency"
+   label variable b_a "Belonging – Autonomy"
 
    local tail_size = 0.05
 
@@ -1051,13 +1073,13 @@ preserve
           by(productivity, note("") graphregion(color(white))) ///
           xtitle("") ///
           xlabel(1 2 3 4) ///
-          ytitle("Durchschnittliche Differenz") ///
+          ytitle("Difference") ///
           ylabel($breakdown_y_scale, angle(0)) ///
           legend(order(1 2 3 4 5 6))
-   graph export "figure_18.pdf", as(pdf) replace
+   graph export "figure_18_english.pdf", as(pdf) replace
 
 
-/* figure 19 */
+/* figure 19 english */
    twoway (bar s_a breakdown, $barchart_options) ///
           (bar s_b breakdown, $barchart_options) ///
           (bar s_d breakdown, $barchart_options) ///
@@ -1069,13 +1091,13 @@ preserve
           by(productivity, note("") graphregion(color(white))) ///
           xtitle("") ///
           xlabel(5 "1" 6 "2") ///
-          ytitle("Durchschnittliche Differenz") ///
+          ytitle("Difference") ///
           ylabel($breakdown_y_scale, angle(0)) ///
           legend(order(4 5 6))
-   graph export "figure_19.pdf", as(pdf) replace
+   graph export "figure_19_english.pdf", as(pdf) replace
 
 
-/* figure 20 */
+/* figure 20 english */
    twoway (bar s_a breakdown, $barchart_options) ///
           (bar s_b breakdown, $barchart_options) ///
           (bar s_d breakdown, $barchart_options) ///
@@ -1087,10 +1109,10 @@ preserve
           by(productivity, note("") graphregion(color(white))) ///
           xtitle("") ///
           xlabel(7 "1" 8 "2") ///
-          ytitle("Durchschnittliche Differenz") ///
+          ytitle("Difference") ///
           ylabel($breakdown_y_scale, angle(0)) ///
           legend(order(2 3 5))
-   graph export "figure_20.pdf", as(pdf) replace
+   graph export "figure_20_english.pdf", as(pdf) replace
 restore
 
 
